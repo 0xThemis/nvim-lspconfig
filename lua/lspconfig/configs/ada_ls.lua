@@ -1,29 +1,22 @@
 local util = require 'lspconfig.util'
 
+-- Check if the config is already defined (useful when reloading this file)
 return {
   default_config = {
-    cmd = { 'ada_language_server' },
-    filetypes = { 'ada' },
-    root_dir = util.root_pattern('Makefile', '.git', '*.gpr', '*.adc'),
-  },
-  docs = {
-    description = [[
-https://github.com/AdaCore/ada_language_server
+    cmd = { 'nargo', 'lsp' },
+    filetypes = { 'nr', '.nr' },
+    root_dir = util.root_pattern('Nargo.toml'),
+    -- function(fname)
+    --   return util.root_pattern('Nargo.toml')
+    --     or vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+    -- end,
+    settings = {},
+    docs = {
+      description = [[
+https://github.com/noir-lang/noir
 
-Installation instructions can be found [here](https://github.com/AdaCore/ada_language_server#Install).
-
-Can be configured by passing a "settings" object to `ada_ls.setup{}`:
-
-```lua
-require('lspconfig').ada_ls.setup{
-    settings = {
-      ada = {
-        projectFile = "project.gpr";
-        scenarioVariables = { ... };
-      }
-    }
-}
-```
-]],
+Language Server for Noir - a domain specific language for Zero-Knowledge Proofs
+        ]],
+    },
   },
 }
