@@ -4,7 +4,7 @@ local util = require 'lspconfig.util'
 return {
   default_config = {
     cmd = { 'nargo', 'lsp' },
-    filetypes = { 'nr', '.nr' },
+    filetypes = { 'noir' },
     root_dir = util.root_pattern('Nargo.toml'),
     -- function(fname)
     --   return util.root_pattern('Nargo.toml')
